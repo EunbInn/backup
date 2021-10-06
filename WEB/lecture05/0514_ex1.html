@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+
+        $(function() {
+            //click input button -> appears color buttons and text that user input
+            $('#inputBtn').click(function() {
+                let txt = $('#inputStr').val();
+                let colorBtn = "<div>" 
+                            + "<button class='btn' id='red'>빨강</button>"
+                            + "<button class='btn' id='green'>초록</button>"
+                            + "<button class='btn' id='blue'>파랑</button>"
+                            + "</div>";
+
+                if (txt != "" && txt != null) {
+                    $('#mkButton').html("<h1 id='txt'>" + txt + "</h1><br>" + colorBtn);
+                } else {
+                    alert('텍스트를 입력해주세요');
+                }
+                //text input box reset
+                $('#inputStr').val('');
+
+                //change color of text
+                $('.btn').click(function() {
+                    let color = $(this).attr('id');
+                    alert(color + '(으)로 변경됩니다.');
+                    $('#txt').css('color', color)
+                
+                });
+            });
+        });
+
+   
+    </script>
+
+    <style>
+        #txt {
+            color: black;
+        }
+    </style>
+</head>
+    <center>
+        <input type="text" id="inputStr" placeholder="텍스트를 입력해주세요">
+        <button id="inputBtn">확인</button>
+        <div id="mkButton"></div>
+    </center>
+    
+</body>
+</html>

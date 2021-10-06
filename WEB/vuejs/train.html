@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>train</title>
+    <script src="https://unpkg.com/vue@2.4.4/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <div id="content">
+        역이름: <input type="text" v-model="name">
+        <ul>
+            <li v-for="item in items">
+                {{ item.trainLineNm }} {{item.arvlMsg2}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#content',
+            data: { 
+                name: '',
+                items: [] 
+            },
+            watch: {
+                name: function(val) {
+                    if (val == '') {
+                        return;
+                    }
+                    this.debouncedGetData(val);
+                }
+            },
+            created: function() {
+                //jQuery의 setTimeOut과 비슷함
+                this.debouncedGetData = _.debounce((name) => this.getData(name), 1000);
+            },
+            methods: {
+                getData: function(name) {
+                    axios.get('http://swopenapi.seoul.go.kr/api/subway/sample/json/realtimeStationArrival/0/5/' + name)
+                    . then((response) => {
+                        //function안에 this는 해당 this가 포함된 함수를 가리키기 때문에
+                        //우리가 원하는 todo를 바라보지 않으므로 람다를 쓰는게 좋음
+                        this.items = response.data.realtimeArrivalList;
+                    }).catch(function() {
+                        console.log('error: ' + error);
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+</html>

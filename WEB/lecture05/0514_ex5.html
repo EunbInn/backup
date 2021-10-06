@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(function() {
+            $('#confirm').click(function() {
+                let idCheck = $('#id').val();
+                let hobby = $('input:checkbox[name=hobby]:checked').length;
+                let pwd = $('#pw').val().length;
+                let gender = $('input:radio[name=gender]:checked').length;
+                let job = $('#job option:selected').val();
+
+                if (!emailTest(idCheck)) {
+                    alert('아이디 형식을 확인해주세요.');
+                } else if (hobby < 3) {
+                    alert('취미를 3개 이상 선택해주세요.');
+                } else if (pwd < 5) {
+                    alert('비밀번호를 5자리 이상 입력해주세요.');
+                } else if (gender < 1) {
+                    alert('성별을 선택해주세요.');
+                } else if (job == 'blank') {
+                    alert('직업을 선택해주세요.');
+                } else {
+                    alert('가입이 승인되었습니다.');
+                }
+            });
+        })
+
+        //정규표현식
+        function emailTest(email) {
+            var filter = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+            if (filter.test(email)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+
+    <style>
+        .main {
+            display: inline-block;
+            width: 500px;
+            height: 500px;
+            line-height: 30px;
+            
+        }
+        .checkBox {
+            display: inline-block;
+            position: relative;
+            width:220px;
+
+        }
+
+        .box {
+            display: inline-block;
+            width:230px;
+        }
+
+        #reset, #confirm {
+            border: rgb(192, 192, 192) solid 1px;
+            background-color: rgb(214, 164, 146);
+            color: white;
+            padding: 7px 20px;
+            margin-left: 40px;
+            font-weight: bold;
+ 
+        }
+
+    </style>
+</head>
+<body>
+    <form>
+        <div class="main">
+            <div>
+                <span style="margin-right: 50px;">아이디</span>
+                <input type="text" id="id" placeholder="이메일 형식으로 입력">
+            </div>
+
+            <div>
+                <span style="margin-right: 35px;">비밀번호</span>
+                <input type="password" id="pw" maxlength="15" placeholder="5자리 이상 입력">
+            </div>
+
+            <div>
+                <span style="margin-right: 62px;">성별</span>
+                <input type="radio" id="male" value="male" name="gender"><label for="male">남자</label>
+                <input type="radio" id="female" value="female" name="gender"><label for="female">여자</label>
+            </div>
+
+            <div>
+                <span style="margin-right: 65px;">직업</span>
+                <select id="job">
+                    <option value="blank" selected></option>
+                    <option value="student">학생</option>
+                    <option value="sw-engineer">개발자</option>
+                    <option value="etc">기타</option>
+                </select>
+            </div>
+
+            <div>
+                <span style="float: left;">취미</span>
+                <span class="box" style="margin-left: 67px;">
+                    <span class="checkBox">
+                        <input type="checkbox" value="coding" name="hobby"> 개발
+                        <input type="checkbox" value="game" name="hobby"> 게임
+                        <input type="checkbox" value="fishing" name="hobby"> 낚시
+                    </span>
+                    <span class="checkBox">
+                        <input type="checkbox" value="exercise" name="hobby"> 운동
+                        <input type="checkbox" value="reading" name="hobby"> 독서
+                        <input type="checkbox" value="music" name="hobby"> 음악감상
+                    </span>
+                </span>
+            </div>
+
+            <div><br>
+                <input type="reset" value="취소" id="reset">
+                <input type="button" value="회원가입" id="confirm">
+            </div>
+
+        </div>
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,98 @@
+<html>
+    <head>
+        <title>회원가입</title>
+
+    </head>
+    <body style="background-color: rgb(247, 245, 238);">
+        <center>
+            <a href="https://www.naver.com" style="text-decoration:none">
+                <h1 style = "color: rgb(66, 179, 44);font-size: 15mm;">NAVER</h1>
+            </a>
+            <hr>
+            <!-- 이름, id, 비밀번호 입력 -->
+            <form>
+                <p>
+                    <label for="id" style="margin-right: 330px;"><b>아이디</b></label><br>
+                    <input type="text" id="id" size="50"> 
+                </p>
+                
+                <p>
+                    <label for="pw" style="margin-right: 320px;"><b>비밀번호</b></label><br>
+                    <input type="password" id="pw" size="50"> 
+                </p>
+
+                <p>
+                    <label for="pw2" style="margin-right: 270px;"><b>비밀번호 재확인</b></label><br>
+                    <input type="password" id="pw2" size="50"> 
+                </p>
+
+                <p>
+                    <label for="name" style="margin-right: 350px;"><b>이름</b></label><br>
+                    <input type="text" id="name" size="50"> 
+                </p>
+
+                <p>
+                    <label for="yy" style="margin-right: 320px;"><b>생년월일</b></label><br>
+                    <input type="text" id="yy" placeholder="년(4자)" size="15" maxlength="4"> 
+                    <select id="mm" style="width: 24mm;">
+                        <option value selected> 월  </option>
+                        <option value="1">1    </option> 
+                        <option value="2"> 2     </option>
+                        <option value="3"> 3     </option>
+                        <option value="4"> 4     </option>
+                        <option value="5"> 5     </option>
+                        <option value="6"> 6     </option>
+                        <option value="7"> 7     </option>
+                        <option value="8"> 8     </option>
+                        <option value="9"> 9     </option>
+                        <option value="10"> 10      </option>
+                        <option value="11"> 11      </option>
+                        <option value="12"> 12      </option>
+                    </select>
+                    <input type="text" id="dd" placeholder="일" size="15" maxlength="2">
+                </p>
+
+                <p>
+                    <label for="gender" style="margin-right: 350px;"><b>성별</b></label><br>
+                    <select id="mm" style="width: 102mm;">
+                        <option value selected>성별</option>
+                        <option value="male">남자</option> 
+                        <option value="female">여자</option>
+                        <option value="none">선택 안함</option>
+                    </select>
+                    
+                </p>
+               
+                <p>
+                    <label for="email" style="margin-right: 225px;">
+                        <b>본인 확인 이메일</b>
+                        <id="choice" style="color: rgb(161, 161, 161);font-size: 3.5mm;">(선택)</style>
+                    </label><br>
+                    <input type="text" id="email" size="50" maxlength="30" placeholder="선택입력"> 
+                </p>
+
+            
+                <p>
+                    <label for="cellular" style="margin-right: 325;">
+                        <b>휴대전화</b>
+                    </label><br>
+                    <select id="cellular" style="width: 102mm;margin-bottom: 1mm;">
+                        <option value="82" selected>대한민국 +82</option>
+                        <option value="233">가나 +233</option>
+                        <option value="30">그리스 +30</option>
+                    </select><br>
+                    <input type="text" size="35" maxlength="15" placeholder="전화번호 입력">
+                    <button value="휴대폰 인증" onclick="alert('click!')" style="color: white;border-style: none; background-color: rgb(33, 175, 33);margin-bottom: 1mm; margin-left: 3px;">
+                        인증번호 받기</button><br>
+                    <input type="text" size="50" maxlength="8" placeholder="인증번호를 입력하세요">
+
+                </p>
+                <!-- 가입신청 및 리셋버튼 -->
+                <button  onclick="alert('가입이 승인되었습니다')" id="done" style="width: 102mm;background-color:rgb(33, 175, 33); color: white; border-style: none;">가입하기
+                </button> 
+                
+
+            </form>
+        </center>
+    </body>
+</html>

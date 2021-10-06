@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>0520_kopo08_test</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        isGray = false;
+        isBlur = false;
+        $(function() {
+            
+            $('#inputImg').change(function(event) {
+                var fileType = event.target.files[0].type;
+                var fileEx = fileType.split('/')[0];
+
+                imgReader(fileEx, event);  
+            })
+
+            $('#grey').click(function() {
+                isGray = true;
+                gray();
+                btnColor($(this));       
+            });
+
+            $('#blur').click(function() {
+                isBlur = true;
+                blur();
+                btnColor($(this));      
+            });
+
+            $('#shadow').click(function() {
+                $('#veiwer').css('box-shadow', '5px 5px');
+                btnColor($(this));      
+            });
+
+            $('#op50').click(function() {
+                $('#veiwer').css('opacity', '50%');
+                btnColor($(this));       
+            });
+            var deg = 0;
+            $('#left').click(function() {
+                deg -= 90;
+                $('#veiwer').css('transform', 'rotate(' + deg +'deg)');
+            });
+
+            $('#right').click(function() {
+                deg += 90;
+                $('#veiwer').css('transform', 'rotate(' + deg +'deg)');
+            });
+
+            $('#reset').click(function() {
+                deg = 0;
+                isGray = false;
+                isBlur = false;
+                $('#veiwer').removeAttr('style');
+                $('.btn').removeAttr('style');      
+            });
+        })
+
+        function btnColor(button) {
+            button.css({'background-color' : 'rgb(104, 104, 233)', 
+                'color':'white'});     
+        }
+
+        function blur() {
+            if (isGray) {
+                $('#veiwer').css('filter', 'grayscale(100%) blur(3px)');
+            } else {
+                $('#veiwer').css('filter', 'blur(3px)');
+            }
+        }
+
+        function gray() {
+            if (isBlur) {
+                $('#veiwer').css('filter', 'grayscale(100%) blur(3px)');
+            } else {
+                $('#veiwer').css('filter', 'grayscale(100%)');
+            }
+        }
+
+        function imgReader(fileEx, event) {
+            const reader = new FileReader();
+                if (fileEx != 'image') {
+                    alert('이미지가 아닙니다.');
+                    console.log(event.target.files[0].type);
+                } else {
+                    reader.onload = function(event) {
+                        $('#veiwer').attr('src', event.target.result);
+                    }
+                    reader.readAsDataURL(event.target.files[0]);
+                    console.log(event.target.files[0].type);
+                }
+  
+        }
+       
+    </script>
+    <style>
+        #box {
+            width: 500px;
+            height: 500px;
+            border: 2px black solid;
+        }
+
+        #imgBox {
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            
+        }
+
+        .on {
+            border: solid 1px white;
+            background-color: rgb(104, 104, 233);
+            color: white;
+        }
+        
+        #inputImg {
+            position:absolute;
+            top: 340px;
+        }
+
+        #veiwer {
+            position: relative;
+            top: 40px;
+            width: 300px;
+            
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: solid 1px rgb(104, 104, 233);
+            background-color: white;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        #reset {
+            filter: unset;
+            opacity: unset;
+            transform: unset;
+            box-shadow: unset;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div id="box">
+            <div id="imgBox">
+                <img src="" id="veiwer" alt="">
+                
+            </div>
+            <div>
+                <input type="file" id="inputImg" name="inputImg">
+                <button class="btn" id="grey">회색으로</button>
+                <button class="btn" id="blur">흐리게</button>
+                <button class="btn" id="shadow">그림자</button>
+                <button class="btn" id="op50">50% 투명</button>
+                <button class="btn" id="left">좌로 90도 회전</button>
+                <button class="btn" id="right">우로 90도 회전</button>
+                <button class="btn" id="reset">이미지 초기화</button>
+            </div>
+
+        </div>
+    </center>
+    
+</body>
+</html>

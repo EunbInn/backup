@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ 
+    <script>    
+
+        function getText() {
+            let html = document.getElementById("inputStr");
+            let text = document.getElementById("mkButton");
+            
+            if (html.value != "" && html.value != null) {
+                text.innerHTML = "<h1 id='txt'>" + html.value + "</h1><br>";    
+                text.innerHTML = text.innerHTML + mkButton();
+            } else {
+                alert("텍스트를 입력해주세요");
+            }
+
+            html.value = "";    
+        }
+
+        function change(txtColor) {
+            alert( txtColor + '(으)로 색상이 변경됩니다.');
+            let getColor = document.getElementById("txt");
+            getColor.style.color = txtColor;
+        }
+
+        function mkButton() {
+
+            let btnRed = "<button type='button' onclick=\"change('red')\">빨강</button>"
+            let btnGreen = "<button type='button' onclick=\"change('green')\">초록</button>"
+            let btnBlue = "<button type='button' onclick=\"change('blue')\">파랑</button>"
+
+            let colorBtn = "<div>" + btnRed + btnGreen + btnBlue + "</div>";
+
+            return colorBtn;
+        }
+ 
+    </script>
+
+</head>
+<body>
+    <center>
+        <input type="text" id="inputStr" placeholder="텍스트를 입력해주세요">
+        <button onclick="getText()">확인</button>
+        <div id="mkButton"></div>
+    </center>
+
+    
+</body>
+</html>

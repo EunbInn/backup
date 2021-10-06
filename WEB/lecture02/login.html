@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .logo #main {
+            text-align: center;
+            text-decoration: none;
+            color: rgb(61, 212, 61);
+            font-size: 40px;
+        }
+
+        #pw_box #pw {
+            width: 280px;
+            height: 30px;
+            border-style: solid 2px black;
+            display: block rgb(61, 212, 61);
+        }
+
+        #id_box #id {
+            width: 280px;
+            height: 30px;
+            border-style: solid 2px black;
+            display: block rgb(61, 212, 61);
+        }
+
+        #confirm{
+            width: 290px;
+            height: 35px;
+            border-style: none;
+            background-color: rgb(61, 212, 61);
+            font-size: 15px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+ 
+        }
+
+    </style>
+</head>
+<body style="background-color: rgb(245, 245, 245);">
+    <form>
+        <center>
+            <div class="logo">
+                <h1><a href="http://www.naver.com" id="main">NAVER</a></h1>
+            </div>
+
+            <div id="id_box">
+                <span class="input_box">
+                    <input type="text" id="id" class="Input" placeholder="아이디">
+                </span>
+            </div> <br>
+
+            <div id="pw_box">
+                <span class="input_box">
+                    <input type="password" id="pw" class="Input" placeholder="비밀번호">
+                </span>
+            </div> <br>
+
+            <div>
+                <button  type="button" id="confirm" onclick="alert('환영합니다');location.href=href='./homepage.html'">
+                        로그인
+                    </a>
+                </button>
+            </div>
+
+            <div>
+                <a href="./ex7_2.html" style="font-size: 12px;text-decoration: none; color: grey;">
+                    회원가입
+                </a>
+                </button>
+            </div>
+        </center>
+    </form>
+</body>
+</html>

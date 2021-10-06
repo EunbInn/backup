@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+
+        $(function() {
+            jsonLoad();
+        })
+
+        function jsonLoad() {
+            $.getJSON('https://jsonplaceholder.typicode.com/todos/',
+            function(data, status) {
+                for (var i = 0; i < data.length; i++) {
+                    $('#box').append('<button class="card">' + data[i].title + '</button>\n'
+                                    +'<div class="list"></div>');
+                }
+
+                $(".card").click(function() {
+                    $(".list").html("");
+                    let index = $(".card").index(this);
+                    let idNum = data[index].id;
+                    
+                    $.getJSON('https://jsonplaceholder.typicode.com/comments', 
+                        function(cData, cStatus) {
+                            for(var j = 0; j < cData.length; j++) {
+                                if(idNum == cData[j].postId) {
+                                    $(".list:eq(" + index +")").append('<div id="getData"><b>name : </b>' + cData[j].name
+                                                                        + '<br><b>email : </b>' + cData[j].email
+                                                                        + '<br><b>body : </b>' + cData[j].body + '</div>');
+                                }
+                            }
+                    })
+                    
+                });
+            });
+
+            
+            
+        }
+    </script>
+
+    <style>
+        #box {
+            width: 500px;
+            display: inline-block;
+            justify-content: center;
+        }
+
+        .card {
+            width: 400px;
+            padding: 10px;
+            border: 1px solid black;
+            background-color: rgb(136, 185, 45);
+            color: white;
+            font-family: sans-serif;
+            font-weight: bold;
+            position: relative;
+            display: inline;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        #getData{
+            text-align: left;
+            width: 380px;
+            padding: 10px;
+            border: 1px solid black;
+            background-color: rgb(231, 255, 185);
+            color: rgb(58, 58, 58);
+            font-family: sans-serif;
+            position: relative;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div id="box">
+
+        </div>
+    </center>
+</body>
+</html>

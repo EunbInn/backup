@@ -1,0 +1,95 @@
+<html>
+    <head>
+        <title>회원가입</title>
+
+    </head>
+    <body>
+        
+        <h1 style = "color: rgb(143, 30, 54);">회원가입</h1>
+        <hr>
+        <!-- 이름, id, 비밀번호 입력 -->
+        <form>
+            <p><input type="text" placeholder="이름" size="50"> </p>
+            <p>
+                <input type="text" placeholder="아이디" size="50"> 
+                <input type="button" value="중복확인" onclick="alert('click!')">
+            </p>
+            
+            <p><input type="password" placeholder="비밀번호" size="50"></p>
+            <input type="password" placeholder="비밀번호 재입력" size="50">
+            <a href="" style="font-size:3.5mm;">비밀번호 도움말</a>
+            <br><br>
+        <!-- 주소, 전화번호, 휴대폰번호 입력 -->
+            <input type="text" placeholder="우편번호" size="20"> 
+            <input type="button" value="주소찾기" onclick="alert('click!')"><br>
+            <input type="text" placeholder="나머지 주소 입력" size="50"> 
+
+            <br><br>
+
+            <label for id="email" style="font-size: 3.5mm;">
+                <input type="text" placeholder="이메일" size="10"> @
+            </label>
+            <select id="email">
+                <option value="">선택</option>
+                <option value="naver">naver.com</option>
+                <option value="google">google.com</option>
+                <option value="daum">daum.net</option>
+            </select>
+
+            <br><br>
+
+            <select id="phone">
+                <option value="">전화번호</option>
+                <option value="02">02</option>
+                <option value="031">031</option>
+                <option value="070">033</option>
+                <option value="070">035</option>
+                <option value="070">070</option>
+
+            </select>
+            
+            <label for="phone">
+                -
+                <input type="text" size="10" maxlength="4"> 
+                - 
+                <input type="text" size="10" maxlength="4">
+            </label>
+
+            <br><br>
+
+
+            <select id="cellular">
+                <option value="">휴대폰 번호</option>
+                <option value="010">010</option>
+                <option value="011">011</option>
+                <option value="017">017</option>
+            </select>
+
+            <label for="cellular">
+                -
+                <input type="text" size="10" maxlength="4"> 
+                - 
+                <input type="text" size="10" maxlength="4">
+            </label>
+            <!-- 휴대폰인증번호 관련 선택사항 -->
+            <input type="button" value="휴대폰 인증" onclick="alert('click!')"><br>
+            <input type="radio" id="now" name="phone" value="now">
+            <label for="now" style="font-size:3mm;">인증받은 휴대폰 번호를 대표번호로 사용</label>
+            <input type="radio" id="other" name="phone" value="other">
+            <label for="other" style="font-size:3mm;">다른번호 등록</label>
+            <input type="radio" id="next_time" name="phone" value="next_time">
+            <label for="next_time" style="font-size:3mm;">다음에 등록함</label>
+            <br><br>
+
+            <input type="text" size="10" maxlength="6"> 
+            <input type="button" value="인증번호 확인" onclick="alert('click!')"><br>
+
+            <br><br>
+            <!-- 가입신청 및 리셋버튼 -->
+            <button  onclick="alert('가입이 승인되었습니다')" style="background-color: brown; color: white;border-style: none;">가입신청</button>
+            <button type="reset" onclick="alert('가입이 취소되었습니다')" style="background-color: grey; color: white;border-style: none;">취소</button>
+
+        </form>
+    
+    </body>
+</html>

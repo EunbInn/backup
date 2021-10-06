@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-repeat: no-repeat;
+            background-size: none;
+            overflow: hidden;
+            background-image: url('wp3641739.jpg');
+        }
+        .header {
+            height: 20px;
+            line-height: 20px;
+            padding: 10px;
+            background-color: rgb(44, 44, 44);
+            margin: 0;
+            display: flex;
+        }
+
+        .header-right {
+            margin-right: 1%;
+            margin-left: 1%;
+            text-decoration: none;
+            color: white;
+            font-size: smaller;
+        }
+        .main {
+            width: 100%;
+            text-align: center;
+            color: rgb(255, 255, 255);
+            line-height: 30px;
+            position: absolute;
+            top: 50%;
+            font-family:Arial, Helvetica, sans-serif;
+            font-size: x-large;      
+        }
+
+        .btn {
+            margin-right: auto;
+            border: none;
+            cursor: pointer;
+            background: none;
+            color: white;
+        }
+
+        .main_text {
+            width: 430px;
+            display: inline-block;
+            font-weight: bold;
+            text-shadow: 1px 1px rgb(216, 216, 216);
+            
+        }
+
+        .btn2 {
+            border: solid 1px white;
+            background: none;
+            color: white;
+            width: 150px;
+            height: 40px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <button class="btn"><i id="star" class="fa fa-star"></i></button>
+        <a href="" class="header-right" id="home">Home</a>
+        <a href="" class="header-right" id="about">About</a>
+        <a href="" class="header-right" id="projects">Projects</a>
+        <a href="" class="header-right" id="contact">Contact</a>
+    </div>
+
+    <div class="main">
+        <span class="main_text">        
+            안녕하세요, 제 이름은 <span style="color: tomato;">김은비</span> 입니다.
+            풀스텍 개발자가 목표입니다.
+        </span>
+        <p>
+            <button class="btn2" value="view">view my work &nbsp;<i id="star" class="fa fa-play"></i></button>
+        </p>
+    </div>
+</body>
+</html>

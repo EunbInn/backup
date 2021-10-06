@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>삼색이가 귀여움</title>
+
+    <script>
+        let div1 = "<div class='get'>1</div>"
+
+        let div2 = "<div class='get2'>2</div>"
+                                
+        let div3 = "<div class='get3'>3</div>"
+        
+        let div4 = "<div class='get4'>4</div>"
+        
+        let divImg = "<div class='img'><img src='cat.jpg' id='imgin'></div>"
+
+        let main = document.write("<div class='main'> " 
+                                + div1 
+                                + div2
+                                + div4
+                                + divImg
+                                + div3
+                                + "</div>");     
+    </script>
+    
+    <style>
+        div.main {
+            width: 500px;
+            height: 500px;
+            text-align: center;
+            
+        }
+
+        div.get {
+            width: 400px;
+            height: 100px;
+            background-color: teal;
+            display: inline-block;
+            
+        }
+
+        div.get2 {
+            width: 100px;
+            height: 400px;
+            background-color: tomato;
+            display: inline-block;
+            float: right;
+           
+        }
+        div.get3 {
+            width: 400px;
+            height: 100px;
+            background-color: yellowgreen;
+            display: inline-block;
+           
+        }
+
+        div.get4 {
+            
+            width: 100px;
+            height: 400px;
+            background-color: indigo;
+            display: inline-block;
+            float: left;
+           
+        }
+
+        #imgin {
+            width: 300px;
+        }
+
+        .get2, .get4 {
+            line-height: 400px;
+        }
+
+        .get, .get3 {
+            line-height: 100px;
+        }
+        
+
+    </style>
+</head>
+
+<body>
+    
+</body>
+</html>

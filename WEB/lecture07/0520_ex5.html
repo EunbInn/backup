@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+
+        $(function() {
+            jsonLoad();
+        })
+
+        function jsonLoad() {
+            $.get('https://api.themoviedb.org/3/movie/upcoming?api_key=a64533e7ece6c72731da47c9c8bc691f&language=ko-KR&page=1',
+            function(data, status) {
+                console.log(data);
+                data = data.results;
+                for (var i = 1; i <= data.length; i++) {
+                    $('#box').append('<div class="movie">'
+                                + '<img src="https://image.tmdb.org/t/p/w500' + data[i].poster_path + '" alt="">' 
+                                + '<br>' + data[i].title + '</div>'
+                                ); 
+                }
+                
+            });
+        }
+    </script>
+
+    <style>
+        #box {
+            display: flexbox;
+            justify-content: space-between;
+        }
+
+        .movie {
+            width:250px;
+            height: 400px;
+            display: inline-block;
+            position: relative;
+            margin-left: 30px;
+        }
+
+        img {
+            width: 200px;
+            position: relative;
+            
+        }
+    </style>
+</head>
+<body>
+
+    <div id="box">
+
+    </div>
+    
+</body>
+</html>

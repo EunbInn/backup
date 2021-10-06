@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<style>
+    .btn{
+        width: 200px;
+        height: 50px;
+        border:solid black 1px;
+        background-color: grey;
+        color: white;
+    }
+
+    .on{
+        width: 200px;
+        height: 50px;
+        border:solid black 1px;
+        background-color: white;
+        color: black;
+    }
+</style>
+<body>
+    <div>
+        <button class="btn">html</button>
+        <button class="btn">css</button>
+        <button class="btn">javascript</button>
+    </div>
+
+    <script>
+        var cc = document.getElementsByClassName("btn");
+
+        // add class when user's cursor is over button
+        for (var j = 0; j < cc.length; j++) {
+            cc[j].addEventListener('mouseover', function() {
+                for (var i = 0; i < cc.length; i++) {
+                cc[i].classList.remove("on");
+            }
+            this.classList.add("on");
+            });
+   
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@2.4.4/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Document</title>
+    
+</head>
+<body>
+    <!-- 스크립트에서 정의한 데이터를 가져옴 -->
+    <div id="app">
+        {{ message }} 
+
+    </div>
+
+    <div id="app-2">
+        <!-- 여기에 작성한 value가 스크립트로 들어가고 스크립트에 있는 것은 {{}} 이 안으로 가서 출력 -->
+        <input type="text" v-model="message"> 
+        <div>
+            {{ message }}
+        </div>
+    </div>
+
+    <div id="app-3">
+        <input type="text" v-model="message">
+        <p>원본: "{{ message }}"</p>
+        <p>역순(computed): "{{ reversedMessage }}"</p>
+        <p>역순2(직접): "{{ message.split('').reverse().join('') }}"</p>
+        <!-- methods는 함수라 ()뒤에 붙여야함 -->
+        <p>역순(methods): "{{ reversedMessage2() }}"</p>
+        <p>"{{ now }}"</p>
+    </div>
+
+    <div id="app-4">
+        <input type="text" v-model="firstName">
+        <input type="text" v-model="lastName">
+        <p>{{ fullName }}</p>
+    </div>
+
+    <div id="app-5"> 
+        <input type="text" v-model="id">
+        {{ todo }}
+    </div>
+    <script>
+        Vue.config.devtools = true;
+        var app = new Vue({
+            el: '#app', //컴포넌트 id app인 애를 가져와서 확인하겠다.
+            data: {
+                message:  'Hello World!' //컴포넌트 데이터 : 상태는 data옵션을 계속 정의할 수 있음
+            }
+        })
+
+        //양방형 바인딩: 데이터 바인딩이 템플릿에서 컴포넌트 , 또는 컴포넌트 템플릿으로 동시에 일어나는 것을 말한다
+        //디렉티브 사용ex)v-model
+        var app2 = new Vue({
+            el: '#app-2',
+            data: {
+                message: '' //실시간으로 가져와서 화면에 출력이 가능함: 데이터 가이딩
+            }
+        })
+
+        var app3 = new Vue({
+            el:'#app-3',
+            data: {
+                message: '안녕하세요'
+            },
+            computed: {
+                //계산된 getter
+                reversedMessage: function() {
+                    return this.message.split('').reverse().join('');
+                },   
+                
+                now: function() {
+                    //message와 묶어주어 input값이 변할때마다 같이 변함
+                    return `${Date.now()} : ${this.message}`;
+                }
+                
+            },
+            methods: { //함수
+                reversedMessage2: function() {
+                    return this.message.split('').reverse().join('');
+                }
+            }
+        })
+
+        var app4 = new Vue ({
+            el: '#app-4',
+            data: {
+                firstName: '',
+                lastName: '',
+                fullName: ''
+            },
+            watch: {
+                firstName: function(val) {
+                    this.fullName = `${val} ${this.lastName}`
+                },
+                lastName: function(val) {
+                    this.fullName = `${this.firstName} ${val}`
+                }
+            }
+        })
+
+        var app5= new Vue({
+            el:'#app-5',
+            data: { 
+                todo: 'dddd',
+                id: '1' 
+            },
+            watch: {
+                id: function(val) {
+                    if (val == '') {
+                        return;
+                    }
+                    this.debouncedGetTodo(val);
+                }
+            },
+            created: function() {
+                console.log('created!!!!!!!!!');
+                this.getTodo(1);
+                //jQuery의 setTimeOut과 비슷함
+                this.debouncedGetTodo = _.debounce((id) => this.getTodo(id), 1000);
+            },
+            methods: {
+                getTodo: function(id) {
+                    axios.get('https://jsonplaceholder.typicode.com/todos/' + id)
+                    . then((response) => {
+                        //function안에 this는 해당 this가 포함된 함수를 가리키기 때문에
+                        //우리가 원하는 todo를 바라보지 않으므로 람다를 쓰는게 좋음
+                        this.todo = response.data.title;
+                    }).catch(function() {
+                        console.log('error: ' + error);
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+</html>
